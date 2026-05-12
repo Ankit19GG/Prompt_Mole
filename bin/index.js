@@ -5,7 +5,6 @@ const path = require("path");
 const { buildPrompt } = require("../src/formatter/buildPrompt");
 const { detectTechStack } = require("../src/detector/detectTechStack");
 const { analyzeFiles } = require("../src/analyzer/analyzeFiles");
-const { buildTree } = require("../src/scanner/buildTree");
 const { loadConfig } = require("../src/config/loadConfig");
 const { buildDependencyGraph } = require("../src/graph/buildDependencyGraph");
 const { buildReverseGraph } = require("../src/graph/buildReverseGraph");
@@ -83,8 +82,6 @@ function main() {
       centrality: centralityScores[file.path] || 0,
     }));
 
-    if (options.verbose) console.error("🏗️ Building context tree...");
-    const tree = buildTree(analyzedFiles);
 
     if (options.verbose) console.error("📝 Formatting prompt...");
     const prompt = buildPrompt({
