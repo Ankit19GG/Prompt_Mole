@@ -1,6 +1,20 @@
 const fs = require("fs");
 const path = require("path");
 
+function createEmptyStack() {
+  return {
+    framework: null,
+    language: "JavaScript",
+    database: [],
+    orm: [],
+    styling: [],
+    stateManagement: [],
+    backend: [],
+    testing: [],
+    additionalDependencies: [],
+  };
+}
+
 function detectTechStack(rootDir) {
   try {
     const packagePath = path.join(
@@ -26,7 +40,7 @@ function detectTechStack(rootDir) {
       rootDir
     );
   } catch (error) {
-    return {};
+    return createEmptyStack();
   }
 }
 
@@ -34,16 +48,7 @@ function analyzeDependencies(
   dependencies,
   rootDir
 ) {
-  const stack = {
-    framework: null,
-    language: null,
-    database: [],
-    orm: [],
-    styling: [],
-    stateManagement: [],
-    backend: [],
-    testing: [],
-  };
+  const stack = createEmptyStack();
 
   if (dependencies.next) {
     stack.framework = "Next.js";

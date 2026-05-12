@@ -90,7 +90,7 @@ function buildStackString(
   }
 
   parts.push(
-    ...techStack.database
+    ...(techStack.database || [])
   );
 
   parts.push(
