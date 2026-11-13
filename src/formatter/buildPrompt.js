@@ -75,6 +75,7 @@ If anything is unclear, ask concise clarification questions.
 function buildStackString(
   techStack
 ) {
+  techStack = techStack || {};
   const parts = [];
 
   if (techStack.framework) {
@@ -94,15 +95,15 @@ function buildStackString(
   );
 
   parts.push(
-    ...techStack.orm
+    ...(techStack.orm || [])
   );
 
   parts.push(
-    ...techStack.styling
+    ...(techStack.styling || [])
   );
 
   parts.push(
-    ...techStack.stateManagement
+    ...(techStack.stateManagement || [])
   );
 
   return parts.join(", ");

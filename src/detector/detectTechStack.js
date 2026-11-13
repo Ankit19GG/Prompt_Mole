@@ -23,7 +23,7 @@ function detectTechStack(rootDir) {
     );
 
     if (!fs.existsSync(packagePath)) {
-      return {};
+      return createEmptyStack();
     }
 
     const pkg = JSON.parse(
